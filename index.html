@@ -24,16 +24,41 @@
     "@type": "Restaurant",
     "name": "Russ Restaurant",
     "url": "https://russ.restaurant/",
-    "description": "Informal, family-run, comfort-food spot famous for fried chicken, catfish and chicken-fried steaks.",
+    "description": "Informal, family-run, comfort-food spot famous for hand-breaded catfish, fried chicken and chicken-fried steaks. Located at 609 E Cherokee St, Wagoner, Oklahoma.",
+    "image": [
+      "https://russ.restaurant/Images/Russ.Sign.png",
+      "https://russ.restaurant/Images/Hero.png"
+    ],
+    "logo": "https://russ.restaurant/Images/Russ.Icon.png",
     "servesCuisine": ["American", "Southern", "Comfort Food"],
-    "address": { "@type": "PostalAddress", "streetAddress": "609 E Cherokee St", "addressLocality": "Wagoner", "addressRegion": "OK", "postalCode": "74467", "addressCountry": "US" },
+    "menu": "https://russ.restaurant/#menu",
+    "hasMap": "https://www.google.com/maps/place/Russ+Restaurant/@35.9597679,-95.3724549,17z",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 35.9597679,
+      "longitude": -95.3698783
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "609 E Cherokee St",
+      "addressLocality": "Wagoner",
+      "addressRegion": "OK",
+      "postalCode": "74467",
+      "addressCountry": "US"
+    },
     "telephone": "+19182017000",
     "openingHoursSpecification": [
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Saturday"], "opens": "11:00", "closes": "20:30" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "11:00", "closes": "21:00" }
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "11:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "00:00", "closes": "00:00" }
     ],
     "priceRange": "$$",
-    "acceptsReservations": "false"
+    "acceptsReservations": "False",
+    "currenciesAccepted": "USD",
+    "paymentAccepted": "Cash, Credit Card",
+    "sameAs": [
+      "https://www.google.com/maps/place/Russ+Restaurant/@35.9597679,-95.3724549,17z"
+    ]
   }
   </script>
   <style>
@@ -71,6 +96,7 @@
     }
 
     :focus-visible { outline: 2px solid var(--crimson); outline-offset: 3px; }
+    .vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
     .skip-link {
       position: absolute; top: -100%; left: 1rem;
@@ -500,6 +526,7 @@
 <header class="hero">
   <div class="hero-bg" role="img" aria-label="Russ Restaurant exterior in Wagoner, Oklahoma"></div>
   <div class="hero-content">
+    <h1 class="vh">Russ Restaurant — Wagoner, OK</h1>
     <picture>
       <source srcset="Images/Russ.Sign.webp" type="image/webp">
       <img src="Images/Russ.Sign.png" alt="Russ Restaurant — Good Home Cooking" class="hero-sign" width="800" height="400" fetchpriority="high">
