@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#841617">
+  <meta name="color-scheme" content="light">
+  <title>Russ Restaurant - Wagoner, OK</title>
+  <meta name="description" content="Informal, family-run comfort-food spot in Wagoner, Oklahoma. Famous for hand breaded catfish, fried chicken, and chicken-fried steaks. Call ahead orders accepted.">
+  <meta property="og:title" content="Russ Restaurant -- Wagoner, OK">
+  <meta property="og:description" content="Family dining specializing in hand breaded fish and chicken. Famous for fried chicken, catfish, and chicken-fried steaks.">
+  <meta property="og:image" content="Images/Russ.Sign.png">
+  <meta property="og:type" content="restaurant">
+  <link rel="icon" type="image/png" href="Images/Russ.Favicon.png">
+  <link rel="apple-touch-icon" href="Images/Russ.Icon.png" sizes="180x180">
+  <link rel="preload" as="image" href="Images/Hero.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Russ Restaurant",
+    "description": "Informal, family-run, comfort-food spot famous for fried chicken, catfish and chicken-fried steaks.",
+    "servesCuisine": ["American", "Southern", "Comfort Food"],
+    "address": { "@type": "PostalAddress", "streetAddress": "609 E Cherokee St", "addressLocality": "Wagoner", "addressRegion": "OK", "postalCode": "74467", "addressCountry": "US" },
+    "telephone": "+19182017000",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Saturday"], "opens": "11:00", "closes": "20:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "11:00", "closes": "21:00" }
+    ],
+    "priceRange": "$$",
+    "acceptsReservations": "false"
+  }
+  </script>
+  <style>
+    /* ═══════════════════════════════════════
+       DESIGN SYSTEM
+       Alternating dark/light bands create a
+       rhythmic scroll cadence that reduces
+       cognitive fatigue and groups information
+       into digestible chunks.
+       ═══════════════════════════════════════ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --night: #12100E;
+      --crimson: #841617;
+      --crimson-hover: #A31D1E;
+      --cream: #FAF6EE;
+      --cream-deep: #EDE5D5;
+      --gold: #D4A84B;
+      --gold-dim: rgba(212, 168, 75, 0.25);
+      --sage: #5BB5AD;
+      --sage-deep: #2D7D76;
+      --text-dark: #1A1410;
+      --text-dim: #8A7E72;
+      --radius: 20px;
+      --radius-sm: 10px;
+      --section-pad: clamp(5rem, 10vw, 9rem);
+      --content-w: 1100px;
+      --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text-dark);
+      background: var(--night);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--sage);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--crimson); color: #fff;
+      padding: 0.75rem 1.5rem; font-weight: 700; font-size: 0.9rem;
+      border-radius: var(--radius-sm);
+      z-index: 9999; text-decoration: none;
+      transition: top 0.15s ease;
+    }
+    .skip-link:focus { top: 0.75rem; outline: 3px solid #fff; outline-offset: 2px; }
+
+
+    /* ═══ SCROLL REVEAL ═══ */
+    .reveal { opacity: 1; transform: none; }
+    .reveal.pending {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.12s; }
+    .reveal-d2 { transition-delay: 0.24s; }
+    .reveal-d3 { transition-delay: 0.36s; }
+
+
+    /* ═══ SHARED TYPOGRAPHY ═══
+       Section labels use tracked uppercase for
+       a diner-menu vernacular. Headings use
+       Playfair Display for editorial authority. */
+    .section-label {
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 4px;
+      text-transform: uppercase; display: block;
+      margin-bottom: 1rem;
+    }
+    .section-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 900; line-height: 1.08;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+    }
+
+
+    /* ═══ SHARED BUTTON SYSTEM ═══ */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: inherit; font-size: 0.92rem; font-weight: 600;
+      padding: 0.9rem 1.85rem; border-radius: var(--radius);
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.3s var(--ease-out);
+      min-height: 50px;
+    }
+    .btn svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+    /* Gold CTA -- warm, inviting, high-contrast on dark */
+    .btn-gold {
+      background: var(--gold); color: var(--night);
+      box-shadow: 0 4px 20px rgba(212, 168, 75, 0.35);
+    }
+    .btn-gold:hover, .btn-gold:focus-visible {
+      background: #E0B55A; transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(212, 168, 75, 0.45);
+    }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05); color: var(--cream);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+    }
+    .btn-outline:hover, .btn-outline:focus-visible {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+    }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--cream); color: var(--crimson); font-family: inherit;
+      font-weight: 700; font-size: 0.9rem; padding: 0.9rem 2.25rem;
+      border-radius: var(--radius); text-decoration: none;
+      transition: all 0.25s; min-height: 50px; border: none; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+    .btn-white:hover, .btn-white:focus-visible { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18); }
+    .btn-white svg { width: 16px; height: 16px; fill: currentColor; }
+
+
+    /* ═══════════════════════════════════════
+       NAV -- frosted glass, minimal, professional
+       Transparent over hero, white glass on scroll.
+       Transition creates a seamless handoff from
+       cinematic hero to functional navigation.
+       ═══════════════════════════════════════ */
+    .nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: transparent;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(24px) saturate(1.6);
+      -webkit-backdrop-filter: blur(24px) saturate(1.6);
+      box-shadow: 0 1px 20px rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    @supports not (backdrop-filter: blur(1px)) {
+      .nav.scrolled { background: rgba(255, 255, 255, 0.96); }
+    }
+    .nav-inner {
+      max-width: var(--content-w); margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 2rem; position: relative; min-height: 60px;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none; position: absolute; left: 2rem;
+    }
+    .nav-logo {
+      height: 48px; width: auto;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+      opacity: 0; transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .nav.scrolled .nav-logo { opacity: 1; pointer-events: auto; }
+    .nav-brand:hover .nav-logo { filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.35)); }
+    .nav-loc {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(0, 0, 0, 0.45);
+      border-left: 1px solid rgba(0, 0, 0, 0.1); padding-left: 0.6rem;
+      opacity: 0; transition: opacity 0.25s ease;
+    }
+    .nav.scrolled .nav-loc { opacity: 1; }
+    .nav-links {
+      list-style: none; display: flex; align-items: center; gap: 0.25rem;
+      position: absolute; right: 2rem;
+    }
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.85); text-decoration: none;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.3px;
+      padding: 0.5rem 0.85rem; border-radius: var(--radius-sm);
+      transition: color 0.3s, background 0.3s;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    }
+    .nav-links a:hover, .nav-links a:focus-visible {
+      color: #fff; background: rgba(255, 255, 255, 0.1);
+    }
+    .nav.scrolled .nav-links a { color: var(--crimson); text-shadow: none; }
+    .nav.scrolled .nav-links a:hover, .nav.scrolled .nav-links a:focus-visible {
+      color: var(--crimson); background: rgba(132, 22, 23, 0.06);
+    }
+    .nav-links a.nav-cta-link {
+      background: var(--gold); color: var(--night);
+      font-weight: 700; padding: 0.5rem 1.1rem;
+      border-radius: var(--radius-sm);
+      transition: background 0.2s, transform 0.2s;
+      text-shadow: none;
+      box-shadow: 0 0 0 0 var(--gold-dim);
+      animation: cta-pulse 3s ease-in-out infinite;
+    }
+    @keyframes cta-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 var(--gold-dim); }
+      50% { box-shadow: 0 0 0 6px rgba(212, 168, 75, 0); }
+    }
+    .nav-links a.nav-cta-link:hover, .nav-links a.nav-cta-link:focus-visible {
+      background: #E0B55A; transform: translateY(-1px);
+    }
+    .nav-toggle {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 48px; height: 48px; flex-direction: column; gap: 5px;
+      align-items: center; justify-content: center;
+      position: absolute; right: 1.5rem;
+    }
+    .nav-toggle span {
+      display: block; width: 22px; height: 2.5px;
+      background: #fff; border-radius: 2px; transition: 0.3s;
+      filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.6));
+    }
+    .nav.scrolled .nav-toggle span { background: var(--crimson); filter: none; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+
+    /* ═══════════════════════════════════════
+       HERO -- cinematic, centered, singular
+       One powerful moment: the glowing sign
+       floating in darkness. Centered layout
+       eliminates the overflow issues of the
+       side-by-side approach and creates a
+       clear visual hierarchy top-to-bottom:
+       Brand → Location → Action → Proof
+       ═══════════════════════════════════════ */
+    .hero {
+      min-height: 100vh; min-height: 100svh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      background: var(--night);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('Images/Hero.webp') center 60% / cover no-repeat,
+                  url('Images/Hero.png') center 60% / cover no-repeat;
+      filter: blur(4px) brightness(0.3) saturate(1.3);
+      transform: scale(1.05);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 35%, rgba(212, 168, 75, 0.06) 0%, transparent 60%),
+        linear-gradient(180deg, transparent 0%, transparent 75%, var(--night) 100%);
+    }
+
+    /* Centered vertical stack -- the AIDA framework in layout form */
+    .hero-content {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      max-width: 900px; width: 100%; margin: 0 auto;
+    }
+    .hero-sign-wrap {
+      position: relative; margin-bottom: 1.5rem;
+    }
+    .hero-sign-wrap::after {
+      content: ''; position: absolute; inset: -50px;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.15) 0%, transparent 70%);
+      animation: sign-glow 5s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    .hero-sign {
+      max-width: min(580px, 75vw); height: auto;
+      filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6))
+             drop-shadow(0 0 60px rgba(255, 255, 255, 0.35))
+             drop-shadow(0 0 120px rgba(255, 255, 255, 0.15));
+    }
+    @keyframes sign-glow {
+      from { opacity: 0.6; }
+      to   { opacity: 1; }
+    }
+    .hero-location {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem; font-weight: 700;
+      letter-spacing: 5px; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 1rem;
+    }
+    .hero-subtitle {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      font-weight: 400; font-style: italic;
+      color: rgba(250, 246, 238, 0.7);
+      margin-bottom: 2.5rem; max-width: 520px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 3.5rem;
+    }
+
+    /* Social proof below CTAs -- confirms the decision
+       the user is about to make. Glassmorphic cards
+       float above the hero image for layered depth. */
+    .hero-social-proof {
+      width: 100%; max-width: 700px;
+    }
+    .hero-reviews-row {
+      display: flex; gap: 1rem;
+    }
+    .hero-review-card {
+      flex: 1; min-width: 0;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      text-decoration: none; display: block;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .hero-review-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    .hero-review-card .review-stars { margin-bottom: 0.6rem; }
+    .hero-review-card .review-stars svg { width: 14px; height: 14px; fill: var(--gold); }
+    .hero-review-card .review-name {
+      font-size: 0.82rem; font-weight: 700; color: var(--cream);
+      margin-bottom: 0.25rem;
+    }
+    .hero-review-card .review-text {
+      font-size: 0.85rem; color: rgba(250, 246, 238, 0.65);
+      line-height: 1.6; display: block;
+      display: -webkit-box; -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+
+    .hero-edge {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 100px; z-index: 3;
+      background: linear-gradient(to bottom, transparent, var(--cream));
+    }
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 50%; z-index: 4;
+      transform: translateX(-50%);
+      animation: scroll-bounce 2.5s ease-in-out infinite;
+      opacity: 0.4;
+    }
+    .scroll-hint svg { width: 28px; height: 28px; fill: none; stroke: var(--cream); stroke-width: 2; stroke-linecap: round; }
+    @keyframes scroll-bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
+      50% { transform: translateX(-50%) translateY(10px); opacity: 0.7; }
+    }
+
+
+    /* ═══════════════════════════════════════
+       ESSENTIALS -- cream band
+       Practical info first. Users arriving from
+       Google Maps need hours/address/phone in
+       under 3 seconds. Placed immediately after
+       hero to respect this primary intent.
+       ═══════════════════════════════════════ */
+    .essentials {
+      background: var(--cream);
+      padding: var(--section-pad) 2rem;
+    }
+    .essentials-inner {
+      max-width: 960px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .essentials .section-label { color: var(--sage); }
+    .essentials .section-heading { color: var(--crimson); }
+
+    .e-card {
+      background: var(--crimson);
+      border-radius: var(--radius); padding: 2rem;
+      box-shadow: 0 4px 24px rgba(132, 22, 23, 0.12);
+      transition: box-shadow 0.4s var(--ease-out), transform 0.4s var(--spring);
+    }
+    .e-card:hover {
+      box-shadow: 0 12px 40px rgba(132, 22, 23, 0.2);
+      transform: translateY(-4px);
+    }
+    .e-card h3 {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .hours-grid { display: grid; grid-template-columns: 1fr auto; gap: 0.3rem 1rem; }
+    .hours-grid .day { font-weight: 600; font-size: 0.88rem; color: #fff; }
+    .hours-grid .time { font-size: 0.88rem; color: rgba(255,255,255,0.7); text-align: right; }
+    .hours-grid .closed { color: var(--gold); font-weight: 600; }
+    .hours-grid .fri-day { font-weight: 700; color: var(--gold); }
+    .hours-grid .fri-time { font-weight: 700; color: var(--gold); text-align: right; }
+
+    .e-address { font-size: 0.92rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 1.25rem; }
+    .e-maps { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .e-map-btn {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.85rem; font-weight: 600; color: #fff;
+      text-decoration: none; padding: 0.45rem 0.85rem;
+      border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius-sm);
+      transition: all 0.2s; min-height: 36px;
+    }
+    .e-map-btn:hover, .e-map-btn:focus-visible {
+      border-color: #fff; background: rgba(255,255,255,0.1);
+    }
+    .e-map-btn svg { width: 13px; height: 13px; fill: currentColor; }
+    .e-phone-num {
+      display: block; font-size: 1.5rem; font-weight: 800;
+      color: #fff; text-decoration: none;
+      margin-bottom: 0.5rem; transition: color 0.2s;
+    }
+    .e-phone-num:hover { color: var(--gold); }
+    .e-phone-note { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+
+    /* ═══════════════════════════════════════
+       PILLARS -- crimson band
+       Three signature dishes chunked into
+       numbered cards for easy recall. The
+       "rule of three" leverages working memory
+       limits -- three items are remembered
+       better than four or five.
+       ═══════════════════════════════════════ */
+    .pillars {
+      background: var(--crimson);
+      padding: var(--section-pad) 2rem;
+    }
+    .pillars-top {
+      text-align: center; max-width: var(--content-w);
+      margin: 0 auto 3.5rem;
+    }
+    .pillars-top .section-label { color: var(--gold); }
+    .pillars-top .section-heading { color: var(--cream); }
+    .pillars-grid {
+      max-width: var(--content-w); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .pillar-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem; text-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease-out);
+    }
+    .pillar-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+    }
+    .pillar-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 4rem; font-weight: 700; font-style: italic;
+      color: var(--gold); line-height: 1;
+      margin-bottom: 1rem; opacity: 0.8;
+    }
+    .pillar-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--crimson); margin-bottom: 0.75rem;
+    }
+    .pillar-card p {
+      font-size: 0.9rem; color: var(--text-dim); line-height: 1.75;
+    }
+
+
+    /* ═══════════════════════════════════════
+       MENU -- cream band
+       Tabbed interface reduces information
+       overload. Users see one category at a
+       time, preventing the "paradox of choice"
+       from making the menu feel overwhelming.
+       ═══════════════════════════════════════ */
+    .menu-section {
+      background: var(--cream);
+      padding: var(--section-pad) 2rem;
+    }
+    .menu-wrap { max-width: var(--content-w); margin: 0 auto; }
+    .menu-header { text-align: center; margin-bottom: 3rem; }
+    .menu-header .section-label { color: var(--sage); }
+    .menu-header .section-heading { color: var(--crimson); margin-bottom: 0.5rem; }
+    .menu-header .sub { font-size: 0.9rem; color: var(--text-dim); }
+
+    .menu-tabs {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 0.4rem; margin-bottom: 3rem;
+    }
+    .menu-tabs button {
+      background: transparent;
+      border: 1.5px solid var(--cream-deep);
+      padding: 0.6rem 1.25rem; min-height: 44px;
+      font-family: inherit; font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.4px; color: var(--text-dim);
+      border-radius: var(--radius-sm); cursor: pointer;
+      transition: all 0.25s var(--ease-out);
+    }
+    .menu-tabs button:hover {
+      border-color: var(--crimson); color: var(--crimson);
+    }
+    .menu-tabs button:focus-visible { outline: 3px solid var(--sage); outline-offset: 2px; }
+    .menu-tabs button[aria-selected="true"] {
+      background: var(--crimson); border-color: var(--crimson);
+      color: #fff; box-shadow: 0 2px 12px rgba(132,22,23,0.25);
+    }
+
+    .panel { display: none; animation: panelReveal 0.3s ease both; }
+    .panel.active { display: block; }
+    @keyframes panelReveal {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+    .m-card {
+      background: var(--crimson);
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 4px 24px rgba(132,22,23,0.1);
+      transition: box-shadow 0.4s var(--ease-out), transform 0.4s var(--spring);
+    }
+    .m-card:hover { box-shadow: 0 12px 40px rgba(132,22,23,0.2); transform: translateY(-2px); }
+    .m-card.wide { grid-column: 1 / -1; }
+    .m-card-head {
+      padding: 0.9rem 1.5rem;
+      font-family: 'Inter', sans-serif; font-weight: 700;
+      font-size: 0.82rem; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--gold);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .m-card-note {
+      padding: 0.65rem 1.5rem; font-size: 0.85rem;
+      color: rgba(255,255,255,0.6); font-style: italic;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .m-card-body { padding: 0.35rem 1.5rem 0.85rem; }
+    .m-row {
+      display: flex; align-items: baseline; gap: 0.5rem;
+      padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .m-row:last-child { border-bottom: none; }
+    .m-name { font-weight: 600; font-size: 0.9rem; color: #fff; white-space: nowrap; }
+    .m-dots { flex: 1; border-bottom: 1px dotted rgba(255,255,255,0.2); min-width: 16px; margin-bottom: 3px; }
+    .m-block { padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .m-block:last-child { border-bottom: none; }
+    .m-desc { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin-top: 0.15rem; }
+    .m-card.hero-card .m-card-head { color: var(--gold); }
+    .m-split { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+
+
+    /* ═══════════════════════════════════════
+       STORY -- dark band (intimate)
+       The shift to near-black creates a moment
+       of intimacy, like being told a story in
+       the dim warmth of the restaurant itself.
+       Centered narrow column mimics a personal
+       letter from the owner.
+       ═══════════════════════════════════════ */
+    .story {
+      background: var(--night);
+      padding: var(--section-pad) 2rem;
+      position: relative;
+    }
+    .story::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.03; pointer-events: none;
+    }
+    .story-inner {
+      max-width: 640px; margin: 0 auto; text-align: center;
+      position: relative;
+    }
+    .story .section-label { color: var(--gold); }
+    .story .section-label::before {
+      content: ''; display: block;
+      width: 40px; height: 2px; background: var(--gold);
+      margin: 0 auto 1rem; opacity: 0.5;
+    }
+    .story .section-heading { color: var(--cream); margin-bottom: 2.5rem; }
+    .story .section-heading em { font-style: italic; color: var(--gold); }
+    .story-text p {
+      font-size: 1.05rem; line-height: 1.9;
+      color: rgba(250, 246, 238, 0.7);
+      margin-bottom: 1.5rem;
+    }
+    .story-text p:last-child {
+      font-weight: 600; color: var(--cream);
+    }
+
+
+    /* ═══════════════════════════════════════
+       REVIEWS -- cream band
+       Real customer voices build trust better
+       than any marketing copy. Stars provide
+       instant quality signal (gold = warmth).
+       ═══════════════════════════════════════ */
+    .reviews {
+      background: var(--cream);
+      padding: var(--section-pad) 2rem;
+    }
+    .reviews-top {
+      text-align: center; max-width: var(--content-w);
+      margin: 0 auto 3rem;
+    }
+    .reviews-top .section-label { color: var(--sage); }
+    .reviews-top .section-heading { color: var(--crimson); margin-bottom: 0.5rem; }
+    .reviews-top .reviews-source {
+      font-size: 0.88rem; color: var(--text-dim);
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+    }
+    .reviews-top .reviews-source svg { width: 16px; height: 16px; }
+    .reviews-grid {
+      max-width: var(--content-w); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+    .review-card {
+      background: var(--crimson);
+      border-radius: var(--radius); padding: 2rem;
+      box-shadow: 0 4px 24px rgba(132,22,23,0.1);
+      transition: box-shadow 0.4s var(--ease-out), transform 0.4s var(--spring);
+    }
+    .review-card:hover {
+      box-shadow: 0 12px 40px rgba(132,22,23,0.2);
+      transform: translateY(-4px);
+    }
+    .review-stars { display: flex; gap: 2px; margin-bottom: 0.75rem; }
+    .review-stars svg { width: 16px; height: 16px; fill: var(--gold); transition: transform 0.2s; }
+    a.review-card {
+      text-decoration: none; display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: flex-start;
+      cursor: pointer;
+    }
+    a.review-card.has-content { align-items: flex-start; justify-content: flex-start; }
+    .review-date { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 0.6rem; }
+    .review-text {
+      font-size: 0.92rem; color: rgba(255,255,255,0.85); line-height: 1.7;
+      margin-bottom: 1rem; position: relative; padding-left: 1.25rem;
+    }
+    .review-text::before {
+      content: '\201C'; position: absolute; left: -0.1rem; top: -0.3rem;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.5rem; color: var(--gold); opacity: 0.3; line-height: 1;
+    }
+    .review-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+    .review-tag {
+      font-size: 0.82rem; font-weight: 600; color: #fff;
+      background: rgba(255,255,255,0.1); padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-sm);
+    }
+    .review-ratings { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .review-rating { font-size: 0.82rem; color: rgba(255,255,255,0.6); font-weight: 600; }
+    .review-rating span { color: var(--gold); }
+    .review-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem; font-weight: 700;
+      color: #fff; margin-bottom: 0.2rem;
+    }
+    .review-cta {
+      font-size: 0.88rem; font-weight: 600; color: var(--gold);
+      display: flex; align-items: center; gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    a.review-card:hover .review-cta { color: #fff; }
+    a.review-card:hover .review-stars svg { transform: scale(1.1); }
+
+
+    /* ═══════════════════════════════════════
+       FOOTER -- warm, minimal closing
+       Peak-end rule: end on warmth. The logo
+       on cream is a warm handshake goodbye.
+       Crimson strip provides brand finality.
+       ═══════════════════════════════════════ */
+    .foot-main {
+      background: var(--cream); padding: 2rem 2rem;
+    }
+    .foot-inner {
+      max-width: var(--content-w); margin: 0 auto;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0.75rem;
+    }
+    .foot-inner img { height: 60px; width: auto; }
+    .foot-inner p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.7; }
+    .foot-inner a { color: var(--crimson); font-weight: 700; text-decoration: none; transition: color 0.2s; }
+    .foot-inner a:hover { color: var(--sage); }
+    .foot-bottom {
+      background: var(--crimson);
+      padding: 0.6rem 2rem; text-align: center;
+      font-size: 0.82rem; color: rgba(255,255,255,0.7);
+    }
+    .foot-bottom a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    .foot-bottom a:hover { color: #fff; }
+
+    /* Overflow containment */
+    .essentials, .menu-section, .reviews { position: relative; overflow: hidden; }
+
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+       Mobile-first overrides for smaller
+       viewports. The centered hero stack
+       naturally adapts -- no negative margins
+       or transform hacks needed.
+       ═══════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .pillars-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+      .essentials-inner { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none; position: absolute; top: 100%; left: 0; width: 100%;
+        background: var(--crimson);
+        flex-direction: column; padding: 0.5rem; gap: 0.15rem;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        padding: 0.9rem 1.25rem; min-height: 48px;
+        display: flex; align-items: center; width: 100%;
+        border-radius: var(--radius-sm);
+        color: rgba(255,255,255,0.85); text-shadow: none;
+      }
+      .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+      .nav-links a.nav-cta-link {
+        background: var(--gold); color: var(--night);
+        justify-content: center; margin: 0.25rem 0;
+      }
+      .hero-content { padding: 5rem 1.5rem 3rem; }
+      .hero-reviews-row { flex-direction: column; }
+      .hero-actions { flex-direction: column; width: 100%; max-width: 300px; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .m-card.wide { grid-column: auto; }
+      .m-split { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .menu-tabs { gap: 0.25rem; }
+      .menu-tabs button { padding: 0.5rem 0.75rem; font-size: 0.78rem; }
+      .hero-sign { max-width: 90vw; }
+      .pillar-num { font-size: 2.5rem; }
+      .e-phone-num { font-size: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+
+<nav class="nav" id="navbar" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <picture>
+        <source srcset="Images/Russ.Icon.webp" type="image/webp">
+        <img src="Images/Russ.Icon.png" alt="Russ Restaurant" class="nav-logo" width="52" height="52">
+      </picture>
+    </a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#essentials">Hours &amp; Location</a></li>
+      <li><a href="https://www.google.com/search?q=Russ+Restaurant+oklahoma&oq=russ+&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIGCAEQRRg7MgYIAhBFGDsyBggDEEUYOzIGCAQQRRhAMgYIBRBFGDkyDAgGECMYJxiABBiKBTIGCAcQRRhB0gEHODY0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x87b60d6637044a99:0x70c5ca27025ec6c7,3,,,," target="_blank" rel="noopener">Leave a Review</a></li>
+      <li><a href="tel:9182017000" class="nav-cta-link" aria-label="Call ahead to order: 918-201-7000">Call Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══
+     Centered vertical stack replaces side-by-side layout.
+     Eliminates overflow, works on every viewport,
+     and follows the AIDA conversion framework. -->
+<header class="hero">
+  <div class="hero-bg" role="img" aria-label="Russ Restaurant exterior in Wagoner, Oklahoma"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-sign-wrap">
+      <picture>
+        <source srcset="Images/Russ.Sign.webp" type="image/webp">
+        <img src="Images/Russ.Sign.png" alt="Russ Restaurant -- Good Home Cooking" class="hero-sign" width="800" height="400" fetchpriority="high">
+      </picture>
+    </div>
+    <p class="hero-location">Wagoner, OK</p>
+    <p class="hero-subtitle">Hand-breaded catfish, bone-in fried chicken &amp; chicken-fried steaks that hang off the plate.</p>
+    <div class="hero-actions">
+      <a href="tel:9182017000" class="btn btn-gold" aria-label="Call ahead to order: 918-201-7000"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>Call Ahead</a>
+      <a href="#menu" class="btn btn-outline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>View Menu</a>
+    </div>
+    <div class="hero-social-proof">
+      <div class="hero-reviews-row">
+        <a class="hero-review-card" id="hero-review" href="#" target="_blank" rel="noopener">
+          <div class="review-stars" aria-label="5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+          <p class="review-name" id="hero-review-attr"><noscript>Candi Kellar</noscript></p>
+          <p class="review-text" id="hero-review-text"><noscript>"What a great place to eat. Very nostalgic!"</noscript></p>
+        </a>
+        <a class="hero-review-card" id="hero-review-2" href="#" target="_blank" rel="noopener">
+          <div class="review-stars" aria-label="5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+          <p class="review-name" id="hero-review-attr-2"></p>
+          <p class="review-text" id="hero-review-text-2"></p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></div>
+  <div class="hero-edge"></div>
+</header>
+
+<main id="main-content">
+
+<section class="essentials" id="essentials" aria-label="Hours, location and contact">
+  <div style="text-align:center; margin-bottom:2.5rem;" class="reveal">
+    <span class="section-label">Plan Your Visit</span>
+    <h2 class="section-heading">Hours, Location &amp; Contact</h2>
+  </div>
+  <div class="essentials-inner">
+    <div class="e-card reveal">
+      <h3>Hours</h3>
+      <dl class="hours-grid">
+        <dt class="day">Monday</dt><dd class="time">11 AM &ndash; 8:30 PM</dd>
+        <dt class="day">Tuesday</dt><dd class="time">11 AM &ndash; 8:30 PM</dd>
+        <dt class="day">Wednesday</dt><dd class="time">11 AM &ndash; 8:30 PM</dd>
+        <dt class="day">Thursday</dt><dd class="time">11 AM &ndash; 8:30 PM</dd>
+        <dt class="day">Friday</dt><dd class="time">11 AM &ndash; 9 PM</dd>
+        <dt class="day">Saturday</dt><dd class="time">11 AM &ndash; 8:30 PM</dd>
+        <dt class="day">Sunday</dt><dd class="time closed">Closed</dd>
+      </dl>
+    </div>
+    <div class="e-card reveal reveal-d1">
+      <h3>Location</h3>
+      <p class="e-address">609 E. Cherokee St<br>Wagoner, OK 74467</p>
+      <div class="e-maps">
+        <a href="https://maps.apple.com/directions?destination=Russ+Restaurant%2C+609+E+Cherokee+St%2C+Wagoner%2C+OK++74467%2C+United+States&destination-place-id=IE6C1E7A2CAC545CF&mode=driving" target="_blank" rel="noopener" class="e-map-btn" aria-label="Get directions in Apple Maps">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" fill="currentColor"/></svg>
+          Apple Maps
+        </a>
+        <a href="https://www.google.com/maps/dir//Russ+Restaurant,+609+E+Cherokee+St,+Wagoner,+OK+74467/@35.9597679,-95.3724549,17z/data=!4m17!1m7!3m6!1s0x87b60d6637044a99:0x70c5ca27025ec6c7!2sRuss+Restaurant!8m2!3d35.9597679!4d-95.36988!16s%2Fg%2F11c0pxb58g!4m8!1m0!1m5!1m1!1s0x87b60d6637044a99:0x70c5ca27025ec6c7!2m2!1d-95.3698783!2d35.9597059!3e0?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="e-map-btn" aria-label="Get directions in Google Maps">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 2a5 5 0 015 5c0 3.54-3.82 8.86-5 10.47C10.82 16.86 7 11.54 7 9a5 5 0 015-5zm0 2.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5z" fill="currentColor"/></svg>
+          Google Maps
+        </a>
+      </div>
+    </div>
+    <div class="e-card reveal reveal-d2">
+      <h3>Call Now</h3>
+      <a href="tel:9182017000" class="e-phone-num" aria-label="Call Russ Restaurant">(918) 201-7000</a>
+      <p class="e-phone-note">Call ahead orders accepted<br>No reservations needed</p>
+    </div>
+  </div>
+</section>
+
+<section class="pillars" aria-label="What we're known for">
+  <div class="pillars-top reveal">
+    <span class="section-label">What We're Known For</span>
+    <h2 class="section-heading">Three Reasons Folks Keep Coming Back</h2>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card reveal">
+      <div class="pillar-num">1</div>
+      <h3>Hand-Breaded Catfish</h3>
+      <p>Fresh fillets breaded daily, fried golden. Served with brown beans, coleslaw &amp; jalape&ntilde;o hushpuppies.</p>
+    </div>
+    <div class="pillar-card reveal reveal-d1">
+      <div class="pillar-num">2</div>
+      <h3>Bone-In Fried Chicken</h3>
+      <p>Seasoned, breaded, fried to order. Crispy outside, juicy inside. The way it's supposed to taste.</p>
+    </div>
+    <div class="pillar-card reveal reveal-d2">
+      <div class="pillar-num">3</div>
+      <h3>Chicken Fried Steak</h3>
+      <p>Hand-breaded, pan-fried, smothered in cream gravy. A plate so big it hangs over the edge.</p>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu" aria-label="Restaurant menu">
+  <div class="menu-wrap">
+    <div class="menu-header reveal">
+      <span class="section-label">From Our Kitchen</span>
+      <h2 class="section-heading">The Menu</h2>
+    </div>
+
+    <div class="menu-tabs reveal" role="tablist" aria-label="Menu categories">
+      <button role="tab" aria-selected="true" aria-controls="p-start" id="t-start" tabindex="0">Starters</button>
+      <button role="tab" aria-selected="false" aria-controls="p-burg" id="t-burg" tabindex="-1">Burgers &amp; Sandwiches</button>
+      <button role="tab" aria-selected="false" aria-controls="p-spec" id="t-spec" tabindex="-1">Russ Specialties</button>
+      <button role="tab" aria-selected="false" aria-controls="p-din" id="t-din" tabindex="-1">Dinners</button>
+      <button role="tab" aria-selected="false" aria-controls="p-sides" id="t-sides" tabindex="-1">Sides &amp; More</button>
+    </div>
+
+    <div class="panel active" role="tabpanel" id="p-start" aria-labelledby="t-start">
+      <div class="menu-grid">
+        <div class="m-card"><div class="m-card-head">Just Getting Started</div><div class="m-card-body">
+          <div class="m-row"><span class="m-name">Jalape&ntilde;o Cheese Bites</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Fried Mushrooms</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Bacon Cheese Fries</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Fried Pickle Slices</span><span class="m-dots"></span></div>
+          <div class="m-block"><div class="m-name">Country Fries</div><div class="m-desc">Golden fries smothered in gravy</div></div>
+          <div class="m-block"><div class="m-name">Sampler</div><div class="m-desc">Fried Mushrooms, Pickle Slices &amp; Jalape&ntilde;o Cheese Bites</div></div>
+        </div></div>
+        <div class="m-card"><div class="m-card-head">Salads</div><div class="m-card-body">
+          <div class="m-block"><div class="m-name">Chicken Salad</div><div class="m-desc">Grilled or crispy</div></div>
+          <div class="m-row"><span class="m-name">Chef Salad</span><span class="m-dots"></span></div>
+          <div class="m-block"><div class="m-name">Taco Salad</div><div class="m-desc">Beef or chicken</div></div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-burg" aria-labelledby="t-burg" hidden>
+      <div class="menu-grid">
+        <div class="m-card"><div class="m-card-head">Burgers &amp; Sandwiches</div><div class="m-card-body">
+          <div class="m-block"><div class="m-name">Chicken Sandwich</div><div class="m-desc">Crispy or grilled</div></div>
+          <div class="m-row"><span class="m-name">Chicken Fried Steak Sandwich</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Hot Ham &amp; Cheese</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Grilled Cheese</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Catfish Po'Boy</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">BLT</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Bacon Grilled Cheese</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Club Sandwich</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Hamburger</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Cheeseburger</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Bacon Cheeseburger</span><span class="m-dots"></span></div>
+          <div class="m-block"><div class="m-name">Cheeseburger 2X</div><div class="m-desc">Double meat, double cheese</div></div>
+          <div class="m-block"><div class="m-name">Bacon Cheeseburger 2X</div><div class="m-desc">Double meat, double cheese, double bacon</div></div>
+        </div></div>
+        <div class="m-card"><div class="m-card-head">Specialty Sandwiches</div><div class="m-card-body">
+          <div class="m-block"><div class="m-name">American Burger</div><div class="m-desc">Two beef patties, kielbasa sausage, pepper jack &amp; BBQ sauce</div></div>
+          <div class="m-block"><div class="m-name">Patty Melt</div><div class="m-desc">Grilled onions &amp; Swiss on wheat bread</div></div>
+          <div class="m-block"><div class="m-name">Monterey Jack Chicken</div><div class="m-desc">Bacon, pepper jack, jalape&ntilde;os, veggies optional</div></div>
+          <div class="m-block"><div class="m-name">Monterey Jack Burger</div><div class="m-desc">Bacon, pepper jack, jalape&ntilde;os, veggies optional</div></div>
+          <div class="m-block"><div class="m-name">Mushroom &amp; Swiss Burger</div><div class="m-desc">Swiss, mushrooms &amp; mayo</div></div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-spec" aria-labelledby="t-spec" hidden>
+      <div class="menu-grid">
+        <div class="m-card hero-card wide"><div class="m-card-head">Russ Specialty &mdash; Catfish Dinners</div>
+          <div class="m-card-note">Served with fries, brown beans, coleslaw &amp; jalape&ntilde;o hushpuppies</div>
+          <div class="m-card-body"><div class="m-split">
+            <div>
+              <div class="m-row"><span class="m-name">4 Pc. Catfish</span><span class="m-dots"></span></div>
+              <div class="m-row"><span class="m-name">6 Pc. Catfish</span><span class="m-dots"></span></div>
+              <div class="m-row"><span class="m-name">Catfish (4) &amp; Shrimp (6)</span><span class="m-dots"></span></div>
+              <div class="m-row"><span class="m-name">Fish &amp; Boneless Chicken Combo</span><span class="m-dots"></span></div>
+            </div>
+            <div>
+              <div class="m-row"><span class="m-name">Blackened Catfish Dinner</span><span class="m-dots"></span></div>
+              <div class="m-block"><div class="m-name">Fried Shrimp Dinner</div><div class="m-desc">6 pieces of fried shrimp</div></div>
+              <div class="m-block"><div class="m-name">Family Catch</div><div class="m-desc">Serves 4&ndash;6 &mdash; 1 lb catfish, pint mashed potatoes &amp; gravy or family fries, quart brown beans, quart coleslaw, dozen hushpuppies</div></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-din" aria-labelledby="t-din" hidden>
+      <div class="menu-grid">
+        <div class="m-card"><div class="m-card-head">Chicken Dinners</div>
+          <div class="m-card-note">Choice of two sides and a roll or cornbread</div>
+          <div class="m-card-body">
+            <div class="m-block"><div class="m-name">2 Pc. Chicken</div><div class="m-desc">Breast &amp; leg</div></div>
+            <div class="m-block"><div class="m-name">3 Pc. Chicken</div><div class="m-desc">Breast, leg &amp; thigh</div></div>
+            <div class="m-row"><span class="m-name">4 Wing Dinner</span><span class="m-dots"></span></div>
+            <div class="m-block"><div class="m-name">Boneless Chicken</div><div class="m-desc">Grilled or crispy &middot; Add gravy</div></div>
+            <div class="m-block"><div class="m-name">Boneless Family Dinner</div><div class="m-desc">Serves 4&ndash;6 &mdash; 12 strips, mashed potatoes &amp; gravy or family fries, coleslaw, brown beans, 4 rolls</div></div>
+            <div class="m-block"><div class="m-name">8 Pc. Chicken Pack</div><div class="m-desc">Serves 4&ndash;6 &mdash; 8 bone-in pieces, mashed potatoes &amp; gravy or family fries, brown beans, coleslaw, 4 rolls</div></div>
+          </div>
+        </div>
+        <div class="m-card"><div class="m-card-head">Family Favorites</div>
+          <div class="m-card-note">Choice of two sides and a roll or cornbread</div>
+          <div class="m-card-body">
+            <div class="m-row"><span class="m-name">Chicken Fried Steak Dinner</span><span class="m-dots"></span></div>
+            <div class="m-block"><div class="m-name">Hamburger Steak</div><div class="m-desc">Grilled onions &amp; brown gravy &middot; Add mushrooms</div></div>
+            <div class="m-block"><div class="m-name">Pork Chop Dinner</div><div class="m-desc">Grilled or fried</div></div>
+            <div class="m-block"><div class="m-name">BBQ Chicken Dinner</div><div class="m-desc">Grilled breast, monterey jack, BBQ sauce, jalape&ntilde;os, onion rings</div></div>
+            <div class="m-block"><div class="m-name">Open Face Sandwich</div><div class="m-desc">Beef patty &amp; fries on bun smothered in brown gravy</div></div>
+          </div>
+        </div>
+        <div class="m-card"><div class="m-card-head">Senior Menu</div>
+          <div class="m-card-note">Age 60+ &middot; One side and a drink</div>
+          <div class="m-card-body">
+            <div class="m-row"><span class="m-name">3 Piece Fish</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">3 Piece Boneless Chicken</span><span class="m-dots"></span></div>
+            <div class="m-block"><div class="m-name">1 Pork Chop</div><div class="m-desc">Grilled or fried</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-sides" aria-labelledby="t-sides" hidden>
+      <div class="menu-grid">
+        <div class="m-card"><div class="m-card-head">Sides</div>
+          <div class="m-card-note">Add to any entr&eacute;e</div>
+          <div class="m-card-body">
+            <div class="m-row"><span class="m-name">Tater Tots</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">Coleslaw</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">French Fries</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">Fried Okra</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">Mashed Potatoes</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">Onion Rings</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">Garden Salad</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">Brown Beans</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">Pasta Salad</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">Cottage Cheese</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">Jalape&ntilde;o Hushpuppies</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">Veggie of the Day</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">Baked Potato</span><span class="m-dots"></span></div>
+            <div class="m-row"><span class="m-name">Loaded Baked Potato</span><span class="m-dots"></span></div>
+          </div>
+        </div>
+        <div class="m-card"><div class="m-card-head">&Agrave; La Carte</div><div class="m-card-body">
+          <div class="m-row"><span class="m-name">Fish (1)</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Boneless Strip (1)</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Shrimp (1)</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Beef Patty (1)</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Baked Potato</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Onions</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Side of Gravy</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Ranch (8 oz.)</span><span class="m-dots"></span></div>
+        </div></div>
+        <div class="m-card"><div class="m-card-head">Desserts &amp; Drinks</div><div class="m-card-body">
+          <div class="m-row"><span class="m-name">Chocolate Meringue</span><span class="m-dots"></span></div>
+          <div class="m-block"><div class="m-name">Cobbler</div><div class="m-desc">Add ice cream</div></div>
+          <div class="m-row"><span class="m-name">Coconut Cr&egrave;me Pie</span><span class="m-dots"></span></div>
+          <div class="m-row"><span class="m-name">Ice Cream</span><span class="m-dots"></span></div>
+          <div class="m-block"><div class="m-name">Tea</div><div class="m-desc">16 oz. / 32 oz.</div></div>
+          <div class="m-block"><div class="m-name">Soda</div><div class="m-desc">16 oz. / 32 oz.</div></div>
+          <div class="m-row"><span class="m-name">Coffee</span><span class="m-dots"></span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="about" aria-label="About Russ Restaurant">
+  <div class="story-inner">
+    <div class="reveal">
+      <span class="section-label">Since Day One</span>
+      <h2 class="section-heading">Real food,<br>cooked <em>right.</em></h2>
+    </div>
+    <div class="story-text reveal reveal-d1">
+      <p>
+        We bread our fish and chicken by hand every single day, fry it up in
+        seasoned cast iron, and put it on your plate with sides made from scratch.
+      </p>
+      <p>
+        No fancy plating. No online reservations. Just a family-run kitchen on
+        Cherokee Street that's been feeding folks who know the
+        difference between good food and everything else.
+      </p>
+      <p>Call ahead and we'll have it hot when you walk in.</p>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" aria-label="Customer reviews">
+  <div class="reviews-top reveal">
+    <span class="section-label">What Folks Are Saying</span>
+    <h2 class="section-heading">Straight From Google Reviews</h2>
+    <p class="reviews-source">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      Google Reviews
+    </p>
+  </div>
+  <div class="reviews-grid">
+    <a href="https://share.google/IngEXfzL92NriJYkP" target="_blank" rel="noopener" class="review-card has-content reveal" aria-label="Read Google review">
+      <div class="review-stars" aria-label="5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      <p class="review-name">Candi Kellar</p>
+      <p class="review-date">5 months ago</p>
+      <p class="review-text">What a great place to eat. Very nostalgic! But the food is the best part! Friendly service and fresh cooked food!</p>
+    </a>
+    <a href="https://maps.app.goo.gl/56fbFnpvfzbgdtMz5" target="_blank" rel="noopener" class="review-card has-content reveal reveal-d1" aria-label="Read Kat Evans' Google review">
+      <div class="review-stars" aria-label="5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      <p class="review-name">Kat Evans</p>
+      <p class="review-date">5 months ago</p>
+      <p class="review-text">Fried Food at it&rsquo;s Best. Never have had an old dirty oil taste no matter the time. I find that exceptional for a smaller place. My most loved feature is that they have Senior Specials on the Menu! Onion Rings are awesome!</p>
+    </a>
+    <a href="https://share.google/LUNXFUoMXACmjIBmY" target="_blank" rel="noopener" class="review-card has-content reveal reveal-d2" aria-label="Read Spike Speedwell's Google review">
+      <div class="review-stars" aria-label="5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      <p class="review-name">Spike Speedwell</p>
+      <p class="review-date">Edited a year ago</p>
+      <p class="review-text">There are always customers at Russ Restaurant every time we drive through Wagoner. Now I know why. It is a fantastic little diner. The best in town. Excellent food, friendly service served in a cozy clean little building. Today&rsquo;s special was chicken fried chicken. Add mashed potatoes with cream gravy, and fried okra then double the order. That is what my wife and I had. It was excellent. Excellent friendly service!</p>
+    </a>
+    <a href="https://share.google/YLnp5ZkYNXTFygbYP" target="_blank" rel="noopener" class="review-card has-content reveal" aria-label="Read J F's Google review">
+      <div class="review-stars" aria-label="5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      <p class="review-name">J F</p>
+      <p class="review-date">A year ago</p>
+      <p class="review-text">Wonderful restaurant, first visit as I was passing through town. Very friendly service and really good tea. I tried one of their specialties, the chicken fried steak, with fried okra and a loaded baked potato. Excellent all the way around. Loved it!!</p>
+    </a>
+    <a href="https://share.google/CZEWGw7AKfxKfepkK" target="_blank" rel="noopener" class="review-card has-content reveal reveal-d1" aria-label="Read Scott Keele's Google review">
+      <div class="review-stars" aria-label="5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      <p class="review-name">Scott Keele</p>
+      <p class="review-date">4 years ago</p>
+      <p class="review-text">We called ahead (only about 30 minutes) and reserved seating for over 20 people! They were super accommodating and had everything ready before we arrived. They have a back room that was perfect. The food is fresh and just what you would expect a country diner to offer. You get a lot of food for the money, for sure. The staff went out of their way to make our time there enjoyable. Hamburgers, catfish, or chicken fried steak&hellip; and all the fixins!</p>
+    </a>
+    <a href="https://maps.app.goo.gl/VJBiSmAQ3dspfWWp9" target="_blank" rel="noopener" class="review-card has-content reveal reveal-d2" aria-label="Read Mrs. LC's Google review">
+      <div class="review-stars" aria-label="5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      <p class="review-name">Mrs. LC</p>
+      <p class="review-date">6 years ago</p>
+      <p class="review-text">Yes this food taste just as good as it looks! Everything we had was so delicious. Taste just like home cooking. Restaurant is very clean and well decorated. Skylie was our waitress and one of the best waitresses I ever had. She was friendly but, not over friendly like most. I hope we get her everytime we go back.</p>
+    </a>
+  </div>
+</section>
+
+
+</main>
+
+<footer>
+  <div class="foot-main">
+    <div class="foot-inner">
+      <picture>
+        <source srcset="Images/Russ.Sign.webp" type="image/webp">
+        <img src="Images/Russ.Sign.png" alt="Russ Restaurant" loading="lazy" width="800" height="400">
+      </picture>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; Russ Restaurant <span id="yr">2026</span></span>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('navbar');
+const heroSign = document.querySelector('.hero-sign');
+let scrollTick = false;
+window.addEventListener('scroll', () => {
+  if (!scrollTick) {
+    requestAnimationFrame(() => {
+      const rect = heroSign ? heroSign.getBoundingClientRect().bottom : 300;
+      nav.classList.toggle('scrolled', rect < 80);
+      const hint = document.querySelector('.scroll-hint');
+      if (hint && window.scrollY > 100) hint.style.opacity = '0';
+      scrollTick = false;
+    });
+    scrollTick = true;
+  }
+}, { passive: true });
+
+const tog = document.querySelector('.nav-toggle');
+const menu = document.getElementById('nav-menu');
+tog.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  tog.setAttribute('aria-expanded', String(open));
+  tog.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+});
+document.querySelectorAll('#nav-menu a').forEach(a => a.addEventListener('click', () => {
+  menu.classList.remove('open');
+  tog.setAttribute('aria-expanded', 'false');
+  tog.setAttribute('aria-label', 'Open menu');
+}));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && menu.classList.contains('open')) {
+    menu.classList.remove('open');
+    tog.setAttribute('aria-expanded', 'false');
+    tog.focus();
+  }
+});
+document.addEventListener('click', e => {
+  if (menu.classList.contains('open') && !nav.contains(e.target)) {
+    menu.classList.remove('open');
+    tog.setAttribute('aria-expanded', 'false');
+  }
+});
+
+const tabs = document.querySelectorAll('.menu-tabs button');
+const panels = document.querySelectorAll('.panel');
+function setTab(t) {
+  if (t.getAttribute('aria-selected') === 'true') return;
+  tabs.forEach(b => { b.setAttribute('aria-selected', 'false'); b.setAttribute('tabindex', '-1'); });
+  panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
+  t.setAttribute('aria-selected', 'true'); t.setAttribute('tabindex', '0');
+  const p = document.getElementById(t.getAttribute('aria-controls'));
+  p.classList.add('active'); p.hidden = false; t.focus();
+}
+tabs.forEach(t => {
+  t.addEventListener('click', () => setTab(t));
+  t.addEventListener('keydown', e => {
+    const i = [...tabs].indexOf(t); let n;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); n = tabs[(i + 1) % tabs.length]; }
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); n = tabs[(i - 1 + tabs.length) % tabs.length]; }
+    else if (e.key === 'Home') { e.preventDefault(); n = tabs[0]; }
+    else if (e.key === 'End') { e.preventDefault(); n = tabs[tabs.length - 1]; }
+    if (n) setTab(n);
+  });
+});
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => { el.classList.add('pending'); io.observe(el); });
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const heroReviews = [
+  { text: "What a great place to eat. Very nostalgic! But the food is the best part! Friendly service and fresh cooked food!", name: "Candi Kellar", url: "https://share.google/IngEXfzL92NriJYkP" },
+  { text: "Fried Food at it's Best. Never have had an old dirty oil taste no matter the time. I find that exceptional for a smaller place. My most loved feature is that they have Senior Specials on the Menu! Onion Rings are awesome!", name: "Kat Evans", url: "https://maps.app.goo.gl/56fbFnpvfzbgdtMz5" },
+  { text: "Wonderful restaurant, first visit as I was passing through town. Very friendly service and really good tea. I tried one of their specialties, the chicken fried steak, with fried okra and a loaded baked potato. Excellent all the way around. Loved it!!", name: "J F", url: "https://share.google/YLnp5ZkYNXTFygbYP" }
+];
+const shuffled = heroReviews.sort(() => 0.5 - Math.random());
+const hr1 = shuffled[0];
+const hr2 = shuffled[1];
+document.getElementById('hero-review').href = hr1.url;
+document.getElementById('hero-review-attr').textContent = hr1.name;
+document.getElementById('hero-review-text').textContent = hr1.text;
+document.getElementById('hero-review-2').href = hr2.url;
+document.getElementById('hero-review-attr-2').textContent = hr2.name;
+document.getElementById('hero-review-text-2').textContent = hr2.text;
+</script>
+
+</body>
+</html>
