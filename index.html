@@ -169,16 +169,16 @@
     /* ── HERO ── */
     .hero {
       min-height: 100vh; min-height: 100svh;
-      display: flex; align-items: center; justify-content: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
       position: relative; overflow: hidden;
       background: var(--night);
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: url('Images/Hero.webp') 22% 100% / cover no-repeat,
-                  url('Images/Hero.png') 22% 100% / cover no-repeat;
+      background: url('Images/Hero.webp') 50% 100% / cover no-repeat,
+                  url('Images/Hero.png') 50% 100% / cover no-repeat;
       filter: brightness(0.3) saturate(0.7) blur(8px);
-      transform: scale(1.4) translateY(40%);
+      transform: scale(1.7) translateX(-10%) translateY(-20%);
     }
     .hero-content {
       position: relative; z-index: 2;
@@ -190,6 +190,14 @@
       max-width: min(520px, 78vw); height: auto;
       margin-bottom: 1.75rem;
       filter: drop-shadow(0 2px 20px rgba(255,255,255,0.2));
+    }
+    .hero-location {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250,246,238,0.5);
+      margin-bottom: 1.75rem;
     }
     .hero-sub {
       font-family: 'Lora', Georgia, serif;
@@ -221,6 +229,40 @@
       background: linear-gradient(to bottom, transparent, var(--cream));
     }
 
+
+    /* ── FEATURED REVIEW ── */
+    .featured-review {
+      position: relative; z-index: 2;
+      width: 100%;
+      padding: 2.5rem 2rem 5rem;
+      text-align: center;
+      border-top: 1px solid rgba(250,246,238,0.1);
+    }
+    .featured-review blockquote {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .featured-review .fr-stars {
+      display: flex; gap: 4px; justify-content: center; margin-bottom: 1rem;
+    }
+    .featured-review .fr-stars svg { width: 14px; height: 14px; fill: var(--gold); }
+    .featured-review .fr-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      font-style: italic;
+      color: rgba(250,246,238,0.85);
+      line-height: 1.65;
+      margin: 0 0 0.85rem;
+    }
+    .featured-review .fr-text::before { content: '\201C'; }
+    .featured-review .fr-text::after { content: '\201D'; }
+    .featured-review .fr-byline {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: rgba(250,246,238,0.45);
+    }
 
     /* ── ESSENTIALS ── */
     .essentials {
@@ -532,17 +574,21 @@
       <source srcset="Images/Russ.Sign.webp" type="image/webp">
       <img src="Images/Russ.Sign.png" alt="Russ Restaurant — Good Home Cooking" class="hero-sign" width="800" height="400" fetchpriority="high">
     </picture>
+    <p class="hero-location">Wagoner, Oklahoma</p>
     <p class="hero-sub">Hand-breaded catfish, bone-in fried chicken &amp; chicken-fried steaks that hang off the plate.</p>
-    <div class="hero-actions">
-      <a href="tel:9182017000" class="btn btn-primary" aria-label="Call ahead to order: 918-201-7000">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-        Call Ahead
-      </a>
-      <a href="#menu" class="btn btn-ghost">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        View Menu
-      </a>
-    </div>
+  </div>
+  <div class="featured-review" aria-label="Featured customer review">
+    <blockquote>
+      <div class="fr-stars" aria-label="5 stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      </div>
+      <p class="fr-text" id="fr-text"></p>
+      <cite class="fr-byline" id="fr-byline"></cite>
+    </blockquote>
   </div>
   <div class="hero-edge"></div>
 </header>
@@ -897,6 +943,20 @@ tabs.forEach(t => {
 });
 
 document.getElementById('yr').textContent = new Date().getFullYear();
+
+(function(){
+  const reviews = [
+    { text: "What a great place to eat. Very nostalgic! But the food is the best part! Friendly service and fresh cooked food!", by: "Candi Kellar" },
+    { text: "Fried Food at it’s Best. Never have had an old dirty oil taste no matter the time. I find that exceptional for a smaller place. My most loved feature is that they have Senior Specials on the Menu! Onion Rings are awesome!", by: "Kat Evans" },
+    { text: "There are always customers at Russ Restaurant every time we drive through Wagoner. Now I know why. Excellent food, friendly service, cozy clean little building.", by: "Spike Speedwell" },
+    { text: "Wonderful restaurant, first visit as I was passing through town. Very friendly service and really good tea. I tried the chicken fried steak, with fried okra and a loaded baked potato. Excellent all the way around. Loved it!!", by: "J F" },
+    { text: "We called ahead and reserved seating for over 20 people! Super accommodating, had everything ready before we arrived. The food is fresh and just what you’d expect a country diner to offer. You get a lot of food for the money, for sure.", by: "Scott Keele" },
+    { text: "Yes this food tastes just as good as it looks! Everything we had was so delicious — just like home cooking. Restaurant is very clean and well decorated. Skylie was our waitress and one of the best I ever had.", by: "Mrs. LC" }
+  ];
+  const r = reviews[Math.floor(Math.random() * reviews.length)];
+  document.getElementById('fr-text').textContent = r.text;
+  document.getElementById('fr-byline').textContent = r.by + ' — Google Review';
+})();
 </script>
 
 </body>
