@@ -84,6 +84,12 @@
          copy stays in Lora/Inter so the page doesn't shout everywhere. */
       --display:     'Anton', 'Playfair Display', Georgia, sans-serif;
       --cta-bar-h:   64px;
+      /* One radius scale, used everywhere — cards and buttons share
+         --radius, tags/pills/tabs share --radius-pill. A site with
+         three different corner values in three different components
+         reads as assembled, not designed. */
+      --radius:      6px;
+      --radius-pill: 999px;
     }
 
     html { scroll-behavior: smooth; }
@@ -110,7 +116,7 @@
       position: absolute; top: -100%; left: 1rem;
       background: var(--ember); color: #fff;
       padding: 0.75rem 1.5rem; font-weight: 700;
-      border-radius: 2px; z-index: 9999; text-decoration: none;
+      border-radius: var(--radius); z-index: 9999; text-decoration: none;
       transition: top 0.15s;
     }
     .skip-link:focus { top: 0.75rem; }
@@ -161,7 +167,7 @@
     .nav-links a {
       font-size: 0.82rem; font-weight: 600;
       color: rgba(246,241,229,0.8); text-decoration: none;
-      padding: 0.45rem 0.85rem; border-radius: 2px;
+      padding: 0.45rem 0.85rem; border-radius: var(--radius);
       transition: color 0.2s, background 0.2s;
       text-shadow: 0 1px 4px rgba(0,0,0,0.6);
       letter-spacing: 0.01em;
@@ -268,7 +274,7 @@
       color: rgba(246,241,229,0.85);
       background: rgba(246,241,229,0.08);
       border: 1px solid rgba(246,241,229,0.18);
-      border-radius: 999px;
+      border-radius: var(--radius-pill);
       padding: 0.4rem 0.9rem 0.4rem 0.7rem;
       margin-bottom: 1.75rem;
     }
@@ -295,7 +301,7 @@
       text-align: center;
       background: rgba(246,241,229,0.05);
       border: 1px solid rgba(246,241,229,0.12);
-      border-radius: 6px;
+      border-radius: var(--radius);
     }
     .featured-review blockquote { margin: 0; }
     .fr-source {
@@ -360,7 +366,12 @@
       gap: 4rem;
       align-items: start;
     }
+    /* Each block head carries a small icon — the same line-icon
+       vocabulary as the hero badge and mobile CTA bar, so "here's a
+       fact about the place" reads as one consistent language instead
+       of three unrelated conventions across the page. */
     .ess-block-head {
+      display: flex; align-items: center; gap: 0.45rem;
       font-size: 0.68rem; font-weight: 700;
       letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--ember);
@@ -368,6 +379,7 @@
       border-bottom: 1px solid rgba(140,20,21,0.18);
       margin-bottom: 1.1rem;
     }
+    .ess-block-head svg { width: 13px; height: 13px; fill: var(--ember); flex-shrink: 0; }
     .hours-list { list-style: none; }
     .hours-list li {
       display: flex; justify-content: space-between;
@@ -431,19 +443,23 @@
     }
     .spec-heading em { font-style: normal; color: var(--amber); }
 
-    /* Three cards side by side — separated by hairline rules.
-       Each card is self-contained, scannable in under 3 seconds. */
+    /* Three cards side by side. Gap + a barely-there card tint does
+       the separating now instead of hairline rules — division by
+       spacing reads lighter than division by border, and it matches
+       the card language used everywhere else on the page (hero
+       review, essentials, reviews grid). */
     .spec-triptych {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(246,241,229,0.12);
       border-top: 1px solid rgba(246,241,229,0.12);
     }
     .spec-card {
       padding: 3rem 2.5rem 3.5rem;
       text-align: center;
-      border-right: 1px solid rgba(246,241,229,0.12);
+      background: var(--ember);
     }
-    .spec-card:last-child { border-right: none; }
     /* Large italic numeral — the visual anchor of each card.
        It signals craft and sequence without explanation. */
     .spec-num {
@@ -487,26 +503,26 @@
     }
     .menu-sub { font-size: 0.85rem; color: var(--ash); margin-bottom: 3rem; font-style: italic; }
 
-    /* Tabs styled as printed menu category headers — solid bottom indicator
-       rather than a bordered box. Clean, functional, typographic. */
+    /* Pill tabs — same rounded-tag language as the hero location badge.
+       A filled pill for the active category is a more immediate
+       "you are here" signal than an underline, and it reads as a
+       single deliberate component system rather than a one-off. */
     .menu-tabs {
-      display: flex; flex-wrap: wrap;
-      border-bottom: 1px solid var(--rule);
-      margin-bottom: 2.75rem; gap: 0;
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 2.75rem;
     }
     .menu-tabs button {
-      background: transparent; border: none;
-      border-bottom: 2px solid transparent; margin-bottom: -1px;
-      padding: 0.7rem 1.1rem; min-height: 44px;
+      background: transparent; border: 1px solid var(--rule);
+      border-radius: var(--radius-pill);
+      padding: 0.55rem 1.1rem; min-height: 44px;
       font-family: inherit; font-size: 0.8rem;
       font-weight: 700; letter-spacing: 0.04em;
       color: var(--ash); cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
+      transition: color 0.2s, background 0.2s, border-color 0.2s;
     }
-    .menu-tabs button:hover { color: var(--ink); }
+    .menu-tabs button:hover { color: var(--ink); border-color: rgba(24,18,14,0.25); }
     .menu-tabs button[aria-selected="true"] {
-      color: var(--ember);
-      border-bottom-color: var(--ember);
+      color: #fff; background: var(--ember); border-color: var(--ember);
     }
     .menu-tabs button:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
 
@@ -608,30 +624,34 @@
     }
     .reviews-source svg { width: 13px; height: 13px; }
 
-    /* Review grid — 1px gap on a dark background creates the illusion
-       of ruled lines between cards, like entries in a guestbook. */
+    /* Review grid — proper gap + individually bordered/rounded cards,
+       the same card unit used for the hero review and essentials
+       blocks. Consistent card language beats the earlier hairline
+       mosaic; it also isolates each testimonial visually so they read
+       as distinct pieces of evidence instead of one dense block. */
     .reviews-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 1px; background: rgba(24,18,14,0.1);
-      border: 1px solid rgba(24,18,14,0.1);
+      gap: 1rem;
     }
     .review-card {
       background: var(--linen);
+      border: 1px solid rgba(24,18,14,0.1);
+      border-radius: var(--radius);
       padding: 1.85rem 1.75rem;
       text-decoration: none; display: block;
       position: relative;
-      transition: background 0.2s;
+      transition: background 0.2s, border-color 0.2s;
     }
-    .review-card:hover { background: #E2D8C2; }
-    /* Large decorative opening quote — gives each card visual weight
-       without adding typographic noise */
+    .review-card:hover { background: #E2D8C2; border-color: rgba(24,18,14,0.18); }
+    /* Small decorative opening quote — gives each card a touch of
+       typographic weight without competing with the review text. */
     .review-card::before {
       content: '\201C';
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 4.5rem; font-weight: 900;
-      color: rgba(140,20,21,0.1);
-      position: absolute; top: 0.5rem; left: 1rem;
+      font-size: 3rem; font-weight: 900;
+      color: rgba(140,20,21,0.12);
+      position: absolute; top: 0.65rem; left: 1.1rem;
       line-height: 1;
       pointer-events: none;
     }
@@ -661,12 +681,13 @@
       border-bottom: 1px solid rgba(246,241,229,0.1);
     }
     .foot-head {
-      display: block;
+      display: flex; align-items: center; gap: 0.4rem;
       font-size: 0.68rem; font-weight: 700;
       letter-spacing: 0.18em; text-transform: uppercase;
       color: rgba(246,241,229,0.45);
       margin-bottom: 1rem;
     }
+    .foot-head svg { width: 12px; height: 12px; fill: rgba(246,241,229,0.45); flex-shrink: 0; }
     .foot-name {
       font-family: var(--display);
       text-transform: uppercase;
@@ -743,31 +764,10 @@
     }
 
 
-    /* ── BUTTONS ── */
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: inherit; font-size: 0.88rem; font-weight: 700;
-      padding: 0.85rem 2rem; border-radius: 2px;
-      text-decoration: none; border: none; cursor: pointer;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-      min-height: 48px; letter-spacing: 0.01em;
-    }
-    .btn svg { width: 15px; height: 15px; fill: currentColor; flex-shrink: 0; }
-    .btn-primary { background: var(--ember); color: #fff; }
-    .btn-primary:hover, .btn-primary:focus-visible { background: var(--ember-deep); }
-    .btn-ghost {
-      background: transparent; color: rgba(246,241,229,0.8);
-      border: 1px solid rgba(246,241,229,0.22);
-    }
-    .btn-ghost:hover, .btn-ghost:focus-visible { color: #fff; border-color: rgba(246,241,229,0.5); }
-
-
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .ess-grid { grid-template-columns: 1fr 1fr; }
       .spec-triptych { grid-template-columns: 1fr; }
-      .spec-card { border-right: none; border-bottom: 1px solid rgba(246,241,229,0.12); }
-      .spec-card:last-child { border-bottom: none; }
       .menu-cols { grid-template-columns: 1fr; }
       .m-wide { grid-column: auto; }
       .foot-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
@@ -786,7 +786,7 @@
       .nav-links.open { display: flex; }
       .nav-links a {
         color: var(--ink) !important; text-shadow: none !important;
-        padding: 0.85rem 1rem; width: 100%; border-radius: 2px;
+        padding: 0.85rem 1rem; width: 100%; border-radius: var(--radius);
         display: flex; align-items: center;
       }
       .nav-links a:hover { color: var(--ember) !important; background: rgba(140,20,21,0.05) !important; }
@@ -893,7 +893,10 @@
     </h2>
     <div class="ess-grid">
       <div class="ess-block">
-        <div class="ess-block-head">Hours</div>
+        <div class="ess-block-head">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 10.41l4.29 4.3-1.42 1.41L11 13V7h2z"/></svg>
+          Hours
+        </div>
         <ul class="hours-list">
           <li><span>Monday</span><span>11 AM – 8:30 PM</span></li>
           <li><span>Tuesday</span><span>11 AM – 8:30 PM</span></li>
@@ -905,7 +908,10 @@
         </ul>
       </div>
       <div class="ess-block">
-        <div class="ess-block-head">Location</div>
+        <div class="ess-block-head">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
+          Location
+        </div>
         <p class="ess-address">609 E. Cherokee St<br>Wagoner, OK 74467</p>
         <div class="map-links">
           <a href="https://maps.apple.com/directions?destination=Russ+Restaurant%2C+609+E+Cherokee+St%2C+Wagoner%2C+OK++74467%2C+United+States&destination-place-id=IE6C1E7A2CAC545CF&mode=driving" target="_blank" rel="noopener" class="map-link">Apple Maps</a>
@@ -914,7 +920,10 @@
         </div>
       </div>
       <div class="ess-block">
-        <div class="ess-block-head">Call Ahead</div>
+        <div class="ess-block-head">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.57 1 1 0 01-.25 1.01l-2.2 2.21z"/></svg>
+          Call Ahead
+        </div>
         <a href="tel:9182017000" class="ess-phone" aria-label="Call Russ Restaurant">(918) 201-7000</a>
         <p class="ess-note">Call ahead orders accepted<br>No reservations needed</p>
       </div>
@@ -1178,7 +1187,10 @@
       <p class="foot-blurb">Family-run comfort food on Cherokee Street. Hand-breaded, fried to order, served with sides made from scratch.</p>
     </div>
     <div>
-      <span class="foot-head">Hours</span>
+      <span class="foot-head">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 10.41l4.29 4.3-1.42 1.41L11 13V7h2z"/></svg>
+        Hours
+      </span>
       <ul class="foot-hours">
         <li><span>Mon – Thu &amp; Sat</span><span>11 AM – 8:30 PM</span></li>
         <li><span>Friday</span><span>11 AM – 9 PM</span></li>
@@ -1186,7 +1198,10 @@
       </ul>
     </div>
     <div>
-      <span class="foot-head">Visit Us</span>
+      <span class="foot-head">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
+        Visit Us
+      </span>
       <address class="foot-address">609 E. Cherokee St<br>Wagoner, OK 74467</address>
       <a href="tel:9182017000" class="foot-phone">(918) 201-7000</a>
     </div>
